@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <base href="/cardrandomizer/"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+
+
+
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+
+    <link rel="icon" href="icons/512x512.png" type="image/png">
+
+
+
+    <title>Card Randomizer</title>
+</head>
+
+<body>
+    <input id="collection-files" type="file" style="display: none" multiple onchange="onFilesLoaded()">
+
+    <ul uk-tab id="header-menu-bar" class="header-menu-bar">
+        <li class="uk-active" id="settings-btn"><a href="#" onclick="setSection('#settings')">Настройки</a></li>
+    </ul>
+    <div id="settings" class="section active uk-flex-column">
+        <div class="uk-padding-small">
+            <form uk-form class="uk-padding-none">
+                <fieldset class="uk-fieldset">
+                    <div class="add-controls col">
+                        <div class="uk-margin" uk-margin>
+                            <input  id="collection-name" class="uk-input uk-text-uppercase" type="text" placeholder="Название коллекции" aria-label="Input">
+                        </div>
+                        <div class="uk-margin" uk-margin>
+                            <button id="select-files" class="uk-button uk-button-secondary" onclick="loadfiles(event)">Выбрать файлы</button>
+                            <span id="collection-count" class="uk-text uk-text-center uk-text-info" disabled>Файлы не выбраны</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true; autoplay: true; autoplay-interval: 2000; pause-on-hover: true">
+                <div class="uk-slider-items uk-grid  current-collection">
+                </div>
+            </div>
+            <div class="uk-margin" uk-margin>
+                <button id="create-collection" class="uk-button uk-button-primary uk-width-1-1@m" onclick="createCollection(event)">Создать</button>
+            </div>
+            <div class="uk-margin" uk-margin>
+                <button id="clear-all-collection" class="uk-button uk-button-danger uk-width-1-1@m" onclick="removeAllCollection(event)">Удалить все наборы</button>
+            </div>
+        </div>
+    </div>
+    <script src="runtime.js"></script>
+</body>
+
+</html>
